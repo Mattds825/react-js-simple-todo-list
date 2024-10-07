@@ -1,9 +1,9 @@
 import React from "react";
 import { TodoCard } from "./TodoCard";
 
-export const TodoList = () => {
-  const todoItems  = ["go to the gym", "buy groceries", "finish essay"];
+export const TodoList = (props) => {
 
+  const { todoItems } = props;
   return (
     <div>
       <ul className="main">
