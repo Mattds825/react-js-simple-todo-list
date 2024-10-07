@@ -9,10 +9,18 @@ function App() {
     setTodoItems([...todoItems, todo]);
   };
 
+  const handleDeleteTodo = index => {
+    const newTodoList = todoItems.filter((todo, idx) => idx !== index);
+
+    setTodoItems(newTodoList);
+  };
+
+  const handleEditTodo = (index, newTodo) => {};
+
   return (
     <>
       <TodoInput handleAddTodo={handleAddTodo} />
-      <TodoList todoItems={todoItems} />
+      <TodoList todoItems={todoItems} handleDeleteTodo={handleDeleteTodo}/>
     </>
   );
 }

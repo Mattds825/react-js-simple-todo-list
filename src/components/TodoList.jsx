@@ -3,12 +3,12 @@ import { TodoCard } from "./TodoCard";
 
 export const TodoList = (props) => {
 
-  const { todoItems } = props;
+  const { todoItems, handleDeleteTodo } = props;
   return (
     <div>
       <ul className="main">
         {todoItems.map((todo, index) => (
-          <TodoCard key={index}>
+          <TodoCard key={index} handleDeleteTodo={handleDeleteTodo} index={index}>
             <p>{todo}</p>
           </TodoCard>
         ))}
