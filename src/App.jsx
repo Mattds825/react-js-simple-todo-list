@@ -12,12 +12,14 @@ function App() {
   };
 
   const handleAddTodo = todo => {
-    setTodoItems([...todoItems, todo]);
+    const newTodoList = [...todoItems, todo];
+    persistsData(newTodoList);
+    setTodoItems(newTodoList); 
   };
 
   const handleDeleteTodo = index => {
     const newTodoList = todoItems.filter((todo, idx) => idx !== index);
-
+    persistsData(newTodoList);
     setTodoItems(newTodoList);
   };
 
