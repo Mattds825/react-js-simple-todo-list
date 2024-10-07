@@ -5,6 +5,8 @@ import { TodoList } from "./components/TodoList";
 function App() {
   const [todoItems, setTodoItems] = useState([]);
 
+  const [todoValue, setTodoValue] = useState("");  
+
   const handleAddTodo = todo => {
     setTodoItems([...todoItems, todo]);
   };
@@ -15,12 +17,16 @@ function App() {
     setTodoItems(newTodoList);
   };
 
-  const handleEditTodo = (index, newTodo) => {};
+  const handleEditTodo = index => {
+    const valueToBeEdited = todoItems[index];
+    setTodoValue(valueToBeEdited);
+    handleDeleteTodo(index);
+  };
 
   return (
     <>
-      <TodoInput handleAddTodo={handleAddTodo} />
-      <TodoList todoItems={todoItems} handleDeleteTodo={handleDeleteTodo}/>
+      <TodoInput handleAddTodo={handleAddTodo} todoValue={todoValue} setTodoValue={setTodoValue}/>
+      <TodoList todoItems={todoItems} handleDeleteTodo={handleDeleteTodo} handleEditTodo={handleEditTodo} />
     </>
   );
 }

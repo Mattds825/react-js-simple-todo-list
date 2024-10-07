@@ -8,7 +8,7 @@ export const TodoList = (props) => {
     <div>
       <ul className="main">
         {todoItems.map((todo, index) => (
-          <TodoCard key={index} handleDeleteTodo={handleDeleteTodo} index={index}>
+          <TodoCard key={index} {...props} index={index}>
             <p>{todo}</p>
           </TodoCard>
         ))}
