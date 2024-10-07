@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TodoInput } from "./components/TodoInput";
 import { TodoList } from "./components/TodoList";
 
@@ -6,6 +6,10 @@ function App() {
   const [todoItems, setTodoItems] = useState([]);
 
   const [todoValue, setTodoValue] = useState("");  
+
+  const persistsData = (newList) => {
+    localStorage.setItem("todos", Jason.stringify({todos: newList}));
+  };
 
   const handleAddTodo = todo => {
     setTodoItems([...todoItems, todo]);
@@ -22,6 +26,17 @@ function App() {
     setTodoValue(valueToBeEdited);
     handleDeleteTodo(index);
   };
+
+
+  useEffect(() =>{
+    if(!localStorage) return;
+
+    let localTodos = localStorage.getItem('todos');
+
+    if(localTodos) return;
+
+    setTodoItems(JSON.parse(localTodos));
+  },[]);
 
   return (
     <>
